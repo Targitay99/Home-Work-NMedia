@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/JAVA/Nmedia/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/JAVA/Nmedia/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1565" />
+        <entry key="..\:/JAVA/Nmedia/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.141" />
+        <entry key="..\:/JAVA/Nmedia/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/JAVA/Nmedia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
