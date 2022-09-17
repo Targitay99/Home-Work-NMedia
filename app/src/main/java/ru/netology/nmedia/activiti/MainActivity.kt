@@ -41,13 +41,11 @@ class MainActivity : AppCompatActivity() {
         binding.favorite.setOnClickListener {
             Log.d("stuff", "like")
             viewModel.like()
-            binding.like.text = viewModel.data.value?.let { it1 -> printQuantity(it1.likes) }
         }
 
         binding.share.setOnClickListener {
             Log.d("stuff", "share")
             viewModel.repost()
-            binding.repost.text = viewModel.data.value?.let { it1 -> printQuantity(it1.repost) }
         }
     }
 }

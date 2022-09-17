@@ -24,7 +24,6 @@ class PostRepositoryInMemoryImpl : PostRepository {
         } else {
             post.copy(likes = post.likes - 1)
         }
-
         post = post.copy(likedByMe = !post.likedByMe)
         data.value = post
     }
