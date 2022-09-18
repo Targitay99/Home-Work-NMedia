@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activiti.MainActivity">
 
 
     <ImageView
@@ -13,6 +13,7 @@
         android:layout_height="@dimen/avatar_size"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/description_post_author_avatar"
+        android:src="@drawable/ic_netology_48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@sample/posts_avatars" />
