@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +14,10 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
 
 interface OnInteractionListener {
+    fun onEdit(post: Post) {}
     fun onLike(post: Post) {}
     fun onRepost(post: Post) {}
+    fun onRemove(post: Post) {}
 }
 
 class PostsAdapter(
@@ -48,22 +51,32 @@ class PostViewHolder(
                 if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
             )
 
-            root.setOnClickListener {
-                Log.d("stuff", "stuff")
-            }
-
-            avatar.setOnClickListener {
-                Log.d("stuff", "avatar")
-            }
-
             favorite.setOnClickListener {
-                Log.d("stuff", "Like")
                 onInteractionListener.onLike(post)
             }
 
-            binding.share.setOnClickListener {
-                Log.d("stuff", "share")
+            share.setOnClickListener {
                 onInteractionListener.onRepost(post)
+            }
+
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.options_post)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                onInteractionListener.onRemove(post)
+                                true
+                            }
+                            R.id.edit -> {
+                                onInteractionListener.onEdit(post)
+                                true
+                            }
+
+                            else -> false
+                        }
+                    }
+                }.show()
             }
         }
     }
