@@ -37,10 +37,10 @@ class PostViewModel : ViewModel() {
         val text = content.trim()
         if (edited.value?.content == text) {
             return
+        } else {
+            edited.value = edited.value?.copy(content = text)
         }
-        edited.value = edited.value?.copy(content = text)
     }
-
     fun likeById(id: Long) = repository.likeById(id)
     fun repost(id: Long) = repository.repost(id)
     fun removeById(id: Long) = repository.removeById(id)
