@@ -41,18 +41,21 @@
         app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Widget.AppTheme.Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
         android:minWidth="24dp"
         android:minHeight="24dp"
-        android:src="@drawable/ic_baseline_more_vert_24"
+        app:icon="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=""
+
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
@@ -82,47 +85,30 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/favorite"
+        style="@style/Widget.AppTheme.LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_menu"
-        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:checkable="true"
+        android:contentDescription="@string/description_post_like"
+        app:icon="@drawable/ic_baseline_favorite_border_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier3" />
-
-    <TextView
-        android:id="@+id/like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default_half"
-        android:layout_marginTop="@dimen/margin_default"
-        app:layout_constraintStart_toEndOf="@id/favorite"
         app:layout_constraintTop_toBottomOf="@id/barrier3"
+        tools:checked="@sample/posts.json/data/likedByMe"
         tools:text="@sample/posts.json/data/like" />
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
+        style="@style/Widget.AppTheme.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_menu"
-        android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toBottomOf="@id/barrier3" />
-
-    <TextView
-        android:id="@+id/repost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default_half"
-        android:layout_marginTop="@dimen/margin_default"
-        app:layout_constraintStart_toEndOf="@id/share"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:contentDescription="@string/description_post_share"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:layout_constraintStart_toEndOf="@+id/favorite"
         app:layout_constraintTop_toBottomOf="@id/barrier3"
-        tools:text="@sample/posts.json/data/repost" />
+        tools:text="@sample/posts.json/data/like" />
 
     <TextView
         android:id="@+id/views"
@@ -144,6 +130,15 @@
         android:src="@drawable/ic_baseline_visibility_24"
         app:layout_constraintEnd_toStartOf="@id/views"
         app:layout_constraintTop_toBottomOf="@id/barrier3" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#9F9B9B"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

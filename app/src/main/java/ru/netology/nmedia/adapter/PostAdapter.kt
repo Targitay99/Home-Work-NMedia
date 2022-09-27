@@ -44,12 +44,10 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            repost.text = printQuantity(post.repost)
+            share.text = printQuantity(post.repost)
             views.text = printQuantity(post.views)
-            like.text = printQuantity(post.likes)
-            favorite.setImageResource(
-                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-            )
+            favorite.isChecked = post.likedByMe
+            favorite.text = "${printQuantity(post.likes)}"
 
             favorite.setOnClickListener {
                 onInteractionListener.onLike(post)
