@@ -64,6 +64,29 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="avatar,author,published,menu" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/play"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/image_video"
+        app:layout_constraintTop_toBottomOf="@+id/barrier2"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+
+
+    <ImageView
+        android:id="@+id/image_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/barrier2"
+        tools:src="@sample/videosampl.png"
+        />
+
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -75,7 +98,7 @@
         android:paddingBottom="@dimen/margin_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_constraintTop_toBottomOf="@id/image_video"
         tools:text="@sample/posts.json/data/content" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -131,7 +154,7 @@
         app:layout_constraintEnd_toStartOf="@id/views"
         app:layout_constraintTop_toBottomOf="@id/barrier3" />
 
-    <TextView
+    <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#9F9B9B"

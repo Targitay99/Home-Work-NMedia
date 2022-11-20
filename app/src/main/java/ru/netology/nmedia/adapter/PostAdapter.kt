@@ -1,23 +1,25 @@
 package ru.netology.nmedia.adapter
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
+
 
 interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onLike(post: Post) {}
-    fun onRepost(post: Post) {}
     fun onRemove(post: Post) {}
+    fun onShare(post: Post) {}
+    fun onPlay(post: Post) {}
 }
 
 class PostsAdapter(
@@ -32,7 +34,6 @@ class PostsAdapter(
         val post = getItem(position)
         holder.bind(post)
     }
-
 }
 
 class PostViewHolder(
@@ -48,13 +49,22 @@ class PostViewHolder(
             views.text = printQuantity(post.views)
             favorite.isChecked = post.likedByMe
             favorite.text = "${printQuantity(post.likes)}"
-
+            if (post.video != null) {
+                play.visibility = View.VISIBLE
+                imageVideo.setImageResource(R.drawable.videosampl)
+                play.setOnClickListener {
+                    onInteractionListener.onPlay(post)
+                }
+                imageVideo.setOnClickListener {
+                    onInteractionListener.onPlay(post)
+                }
+            }
             favorite.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
 
             share.setOnClickListener {
-                onInteractionListener.onRepost(post)
+                onInteractionListener.onShare(post)
             }
 
             menu.setOnClickListener {
@@ -91,7 +101,6 @@ class PostViewHolder(
             else -> "Ага счас"
         }
     }
-
 }
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {

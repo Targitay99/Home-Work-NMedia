@@ -17,21 +17,32 @@
         tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/card_post" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:contentDescription="@string/add_post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_24dp" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="stopEdit,
+        stopEditText,stopEditTitle,
+        editPencil,toolsTop,content,save" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/toolsTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
         app:constraint_referenced_ids="content,save" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#9F9B9B"
-        android:padding="0dp"
-        app:layout_constraintBottom_toTopOf="@id/content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/content"
@@ -58,14 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/content"
         app:srcCompat="@drawable/ic_save_48" />
-
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="stopEdit,stopEditText,stopEditTitle,editPencil" />
 
     <TextView
         android:id="@+id/stopEditText"
@@ -114,7 +117,5 @@
         app:layout_constraintEnd_toStartOf="@id/stopEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_edit_48" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 

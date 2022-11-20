@@ -9,6 +9,18 @@ class PostRepositoryInMemoryImpl : PostRepository {
     private var posts = listOf(
         Post(
             id = nextId++,
+            author = "Олин Александр",
+            content = "Домашнее задание. Не явный интент. Видео.",
+            published = "20 ноября в 12:00",
+            likedByMe = false,
+            repost = 100,
+            views = 100,
+            likes = 99,
+            video = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+        ),
+        Post(
+            id = nextId++,
             author = "Нетология. Университет интернет-профессий будущего",
             content = "Освоение новой профессии — это не только открывающиеся возможности и перспективы, но и настоящий вызов самому себе. Приходится выходить из зоны комфорта и перестраивать привычный образ жизни: менять распорядок дня, искать время для занятий, быть готовым к возможным неудачам в начале пути. В блоге рассказали, как избежать стресса на курсах профпереподготовки → http://netolo.gy/fPD",
             published = "23 сентября в 10:12",
@@ -115,7 +127,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             ) + posts
             data.value = posts
             return
-        }else {
+        } else {
             posts = posts.map {
                 if (it.id != post.id) it else it.copy(content = post.content)
             }
@@ -138,17 +150,20 @@ class PostRepositoryInMemoryImpl : PostRepository {
         data.value = posts
     }
 
-    override fun repost(id: Long) {
+    override fun shareById(id: Long) {
         posts = posts.map {
             if (it.id != id) {
                 it
 
             } else {
-                it.copy(repost = it.repost + 100)
+                it.copy(
+                    repost = it.repost + 100,
+                )
             }
         }
         data.value = posts
     }
+
     override fun removeById(id: Long) {
         posts = posts.filter { it.id != id }
         data.value = posts
