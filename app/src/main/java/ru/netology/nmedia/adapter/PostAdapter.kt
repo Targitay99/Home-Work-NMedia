@@ -51,6 +51,7 @@ class PostViewHolder(
             favorite.text = "${printQuantity(post.likes)}"
             if (post.video != null) {
                 play.visibility = View.VISIBLE
+                imageVideo.visibility = View.VISIBLE
                 imageVideo.setImageResource(R.drawable.videosampl)
                 play.setOnClickListener {
                     onInteractionListener.onPlay(post)
@@ -58,6 +59,11 @@ class PostViewHolder(
                 imageVideo.setOnClickListener {
                     onInteractionListener.onPlay(post)
                 }
+            }else{
+                play.visibility = View.INVISIBLE
+                imageVideo.visibility = View.GONE
+
+
             }
             favorite.setOnClickListener {
                 onInteractionListener.onLike(post)
