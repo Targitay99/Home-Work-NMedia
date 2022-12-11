@@ -13,13 +13,13 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 
-
 interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onLike(post: Post) {}
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
     fun onPlay(post: Post) {}
+    fun onShowPost(post: Post) {}
 }
 
 class PostsAdapter(
@@ -62,15 +62,18 @@ class PostViewHolder(
             }else{
                 play.visibility = View.INVISIBLE
                 imageVideo.visibility = View.GONE
-
-
             }
+
             favorite.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
 
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+
+            content.setOnClickListener{
+                onInteractionListener.onShowPost(post)
             }
 
             menu.setOnClickListener {
@@ -94,7 +97,6 @@ class PostViewHolder(
             }
         }
     }
-
 
     private fun printQuantity(quantity: Int): String {
         return when (quantity) {
