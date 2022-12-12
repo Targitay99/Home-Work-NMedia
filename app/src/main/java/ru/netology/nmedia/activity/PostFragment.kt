@@ -70,19 +70,7 @@ class PostFragment : Fragment() {
                     findNavController().navigateUp()
                     return@observe
                 }
-                viewHolder.bind(
-                    Post(
-                        id = post.id,
-                        author = post.author,
-                        content = post.content,
-                        published = post.published,
-                        likes = post.likes,
-                        likedByMe = post.likedByMe,
-                        repost = post.repost,
-                        views = post.views,
-                        video = post.video
-                    )
-                )
+                viewHolder.bind(post)
             }
         }
         return mBinding.root
