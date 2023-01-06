@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
@@ -36,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.room:room-common:2.4.3'
+    implementation 'androidx.room:room-ktx:2.4.3'
     def core_version = "1.8.0"
     def appcompat_version = "1.5.0"
     def mdc_version = "1.6.1"
@@ -49,7 +52,7 @@ dependencies {
     def fragment_version = "1.5.3"
     def gson_version = "2.9.1"
     def nav_versoin = "2.3.4"
-
+    def room_version = "2.4.3"
 
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -63,10 +66,9 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_versoin"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_versoin"
-
+    kapt "androidx.room:room-compiler:$room_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
-
 }
